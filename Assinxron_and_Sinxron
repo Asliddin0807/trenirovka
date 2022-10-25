@@ -1,0 +1,36 @@
+let users = [
+    {name: 'Asliddin', firstName: 'Nuriddinov'},
+    {name: 'Asilbek', firstName: 'Kenjayev'}
+]
+
+function app(){
+    setTimeout(() => {
+        users.forEach((user) =>{
+            console.log(`${user.name}, ${user.firstName}`);
+        })     
+    },1000)
+}
+function addUsers(event){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            users.push(event)
+
+            const error = false;
+            if(!error){
+                resolve();
+            }else{
+                reject('Nimadir xato ketdi');
+            }
+        }, 1000)
+        
+    })
+    
+}
+
+
+
+async function result(){
+ await addUsers({name: 'Sarvarbek', firstName: 'Kamolidinov'});
+ app();
+}
+result();
